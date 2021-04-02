@@ -8,6 +8,17 @@
             fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
               response.json().then(function(json) {
                 console.log(json);
+                const destination = document.getElementById("destination");
+                let i = 0;
+                destination.addEventListener("click", function(){
+                  destination.innerHTML = `
+                      <div>
+                        <h3>Planet ${json[i].name}</h3>
+                        <img src=${json[i].image} height=250></img>
+                      </div>
+                  `;
+                  i < json.length-1 ? i++ : i = 0;
+                });
               });
             });
          });
